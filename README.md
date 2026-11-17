@@ -1,70 +1,93 @@
-# Getting Started with Create React App
+# React YouTube Clone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A YouTube-inspired video browsing application built with React.js and the YouTube API through RapidAPI. The project provides a video discovery interface with category-based navigation and search functionality.
 
-## Available Scripts
+## Live Demo
 
-In the project directory, you can run:
+[View Live Project](https://react-youtube-clone-irfan.netlify.app/)
 
-### `yarn start`
+## Screenshots
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<!-- Add project screenshots here -->
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `yarn test`
+- Browse videos from different categories.
+- Search for videos.
+- Navigate through categories such as ReactJS, NextJS, JavaScript, Coding, Music, Education, and more.
+- Display video thumbnails, titles, and channel information.
+- Fetch video data using the YouTube API via RapidAPI.
+- Interactive sidebar navigation.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies Used
 
-### `yarn build`
+- React.js
+- JavaScript (ES6+)
+- HTML5
+- CSS3
+- Axios
+- RapidAPI (YouTube V3 API)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Getting Started
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Follow these steps to run the project locally.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 1. Clone the repository
 
-### `yarn eject`
+```bash
+git clone https://github.com/Irfanft12/react-youtube-clone.git
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 2. Navigate to the project directory
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+cd react-youtube-clone
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 3. Install dependencies
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+npm install
+```
 
-## Learn More
+### 4. Configure environment variables
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Create a `.env` file in the project root:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```env
+REACT_APP_RAPID_API_KEY=your_rapidapi_key
+```
 
-### Code Splitting
+Use your own RapidAPI credentials. Never commit your `.env` file to GitHub.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+**Security note:** Frontend environment variables are visible in the browser bundle. For production use, API requests should be routed through a secure backend or serverless function.
 
-### Analyzing the Bundle Size
+### 5. Start the development server
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+npm start
+```
 
-### Making a Progressive Web App
+The application will run at:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+`http://localhost:3000`
 
-### Advanced Configuration
+## Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+The project is deployed using Netlify.
 
-### Deployment
+[Visit Live Application](https://react-youtube-clone-irfan.netlify.app/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Author
 
-### `yarn build` fails to minify
+**Irfan Ahmad**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Senior Front-End Developer | React.js | JavaScript | HTML | CSS
+
+- [GitHub](https://github.com/Irfanft12)
+- [LinkedIn](https://www.linkedin.com/in/irfan-ahmad-dev-mumbai/)
+- [Portfolio](https://irfan-ahmad-portfolio.netlify.app/)
+
+---
+
+*Built as a hands-on project to explore React.js, API integration, and modern frontend development.*
