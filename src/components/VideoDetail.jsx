@@ -12,13 +12,43 @@ const VideoDetail = () => {
 
   const { id } = useParams()
 
-  useEffect(() => {
-    fetchFromAPI(`videos?part=contentDetails,snippet,statistics&id=${id}`)
-    .then((data) => setVideoDetail(data.items[0]))
 
-    fetchFromAPI(`search?part=snippet&relatedToVideoId=${id}&type=video`)
-      .then((data) => setVideos(data.items))
-  }, [id])
+useEffect(() => {
+  const fetchVideoAndSuggestions = async () => {
+    try {
+      // Fetch current video details
+      const videoData = await fetchFromAPI(
+        `videos?part=contentDetails,snippet,statistics&id=${id}`
+      );
+
+      const currentVideo = videoData.items?.[0];
+
+      if (!currentVideo) return;
+
+      setVideoDetail(currentVideo);
+
+      // Search for videos using the current video's title
+      const title = currentVideo.snippet.title;
+
+      const suggestionsData = await fetchFromAPI(
+        `search?part=snippet&q=${encodeURIComponent(title)}&type=video`
+      );
+
+      // Exclude the currently playing video
+      const suggestedVideos = (suggestionsData.items || []).filter(
+        (video) => video.id?.videoId !== id
+      );
+
+      setVideos(suggestedVideos);
+    } catch (error) {
+      console.error("Error fetching video details:", error);
+      setVideos([]);
+    }
+  };
+
+  fetchVideoAndSuggestions();
+}, [id]);
+
 
   if (!videoDetail?.snippet) return "Loading..."
 
