@@ -4,7 +4,11 @@ A YouTube-inspired video browsing application built with React.js and the YouTub
 
 ## Live Demo
 
-[View Live Project](https://react-youtube-clone-irfan.netlify.app/)
+<a href="https://react-youtube-clone-irfan.netlify.app/" target="_blank" rel="noopener noreferrer">
+  View Live Project ↗
+</a>
+
+<!-- [View Live Project](https://react-youtube-clone-irfan.netlify.app/) -->
 
 ## Screenshots
 
@@ -76,7 +80,9 @@ The application will run at:
 
 The project is deployed using Netlify.
 
-[Visit Live Application](https://react-youtube-clone-irfan.netlify.app/)
+<a href="https://react-youtube-clone-irfan.netlify.app/" target="_blank" rel="noopener noreferrer">
+  View Live Project ↗
+</a>
 
 ## Author
 
@@ -84,9 +90,15 @@ The project is deployed using Netlify.
 
 Senior Front-End Developer | React.js | JavaScript | HTML | CSS
 
-- [GitHub](https://github.com/Irfanft12)
-- [LinkedIn](https://www.linkedin.com/in/irfan-ahmad-dev-mumbai/)
-- [Portfolio](https://irfan-ahmad-portfolio.netlify.app/)
+- <a href="https://github.com/Irfanft12" target="_blank" rel="noopener noreferrer">
+  GitHub ↗
+</a>
+- <a href="https://www.linkedin.com/in/irfan-ahmad-dev-mumbai" target="_blank" rel="noopener noreferrer">
+  LinkedIn ↗
+</a>
+- <a href="https://irfan-ahmad-portfolio.netlify.app" target="_blank" rel="noopener noreferrer">
+  Portfolio ↗
+</a>
 
 ---
 
