@@ -8,7 +8,11 @@ A YouTube-inspired video browsing application built with React.js and the YouTub
 
 ## Screenshots
 
-<!-- Add project screenshots here -->
+### Homepage
+![YouTube Clone Homepage](./screenshots/homepage.png)
+
+### Search Results
+![YouTube Clone Search Results](./screenshots/search-results.png)
 
 ## Features
 
