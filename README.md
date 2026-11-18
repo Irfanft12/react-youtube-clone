@@ -1,12 +1,12 @@
 # React YouTube Clone
 
-A YouTube-inspired video browsing application built with React.js and the YouTube API through RapidAPI. The project provides a video discovery interface with category-based navigation and search functionality.
+A YouTube-inspired video browsing application built with **React.js**, **Vite**, and the YouTube API through RapidAPI. Explore videos, browse categories, search for content, watch videos, and navigate through channel pages.
 
-## Live Demo
+## 🚀 Live Demo
 
-[View Live Project](https://react-youtube-clone-irfan.netlify.app/)
+[View Live Application](https://react-youtube-clone-irfan.netlify.app/)
 
-## Screenshots
+## 📸 Screenshots
 
 ### Homepage
 ![YouTube Clone Homepage](./screenshots/homepage.png)
@@ -14,25 +14,31 @@ A YouTube-inspired video browsing application built with React.js and the YouTub
 ### Search Results
 ![YouTube Clone Search Results](./screenshots/search-results.png)
 
-## Features
+## ✨ Features
 
-- Browse videos from different categories.
-- Search for videos.
-- Navigate through categories such as ReactJS, NextJS, JavaScript, Coding, Music, Education, and more.
-- Display video thumbnails, titles, and channel information.
-- Fetch video data using the YouTube API via RapidAPI.
+- Browse videos across different categories.
+- Search for videos by keywords.
+- Explore categories such as ReactJS, NextJS, JavaScript, Coding, Music, Education, and more.
+- View video thumbnails, titles, channel names, and other details.
+- Watch videos using the integrated video player.
+- View detailed video information and suggested videos.
+- Navigate to channel pages and explore channel videos.
 - Interactive sidebar navigation.
+- Responsive user interface.
 
-## Technologies Used
+## 🛠️ Technologies Used
 
-- React.js
-- JavaScript (ES6+)
-- HTML5
-- CSS3
-- Axios
-- RapidAPI (YouTube V3 API)
+- **React.js** – Component-based UI development.
+- **Vite** – Development server and build tool.
+- **JavaScript (ES6+)** – Application logic.
+- **Material UI** – UI components and icons.
+- **React Router DOM** – Client-side routing.
+- **React Player** – Video playback.
+- **Axios** – API requests.
+- **YouTube API via RapidAPI** – Video and channel data.
+- **HTML5 & CSS3** – Structure and styling.
 
-## Getting Started
+## ⚙️ Getting Started
 
 Follow these steps to run the project locally.
 
@@ -56,37 +62,59 @@ npm install
 
 ### 4. Configure environment variables
 
-Create a `.env` file in the project root:
+Create a `.env` file in the project root and add your RapidAPI key:
 
 ```env
-REACT_APP_RAPID_API_KEY=your_rapidapi_key
+VITE_RAPID_API_KEY=your_rapidapi_key
 ```
 
-Use your own RapidAPI credentials. Never commit your `.env` file to GitHub.
+Replace `your_rapidapi_key` with your own RapidAPI key.
 
-**Security note:** Frontend environment variables are visible in the browser bundle. For production use, API requests should be routed through a secure backend or serverless function.
+**Important:** Never commit your `.env` file or expose your API credentials in public repositories.
 
 ### 5. Start the development server
 
 ```bash
-npm start
+npm run dev
 ```
 
-The application will run at:
+Open the local URL shown in your terminal. By default, Vite uses:
 
-`http://localhost:3000`
+```text
+http://localhost:5173
+```
 
-## Deployment
+### 6. Create a production build
 
-The project is deployed using Netlify.
+```bash
+npm run build
+```
 
-[Visit Live Application](https://react-youtube-clone-irfan.netlify.app/)
+The production-ready files will be generated in the `dist` directory.
 
-## Author
+To preview the production build locally:
+
+```bash
+npm run preview
+```
+
+## 🌐 Deployment
+
+The application is deployed using [Netlify](https://www.netlify.com/).
+
+[Visit the Live Application](https://react-youtube-clone-irfan.netlify.app/)
+
+## 🔐 Security Note
+
+Vite exposes environment variables prefixed with `VITE_` in the client-side application bundle. Therefore, API keys used directly in frontend requests are not secret.
+
+For production applications, consider routing API requests through a secure backend or serverless function to protect API credentials.
+
+## 👨‍💻 Author
 
 **Irfan Ahmad**
 
-Senior Front-End Developer | React.js | JavaScript | HTML | CSS
+Senior Front-End Developer | HTML | CSS | JavaScript | jQuery | React.js
 
 - [GitHub](https://github.com/Irfanft12)
 - [LinkedIn](https://www.linkedin.com/in/irfan-ahmad-dev-mumbai/)
@@ -94,4 +122,4 @@ Senior Front-End Developer | React.js | JavaScript | HTML | CSS
 
 ---
 
-*Built as a hands-on project to explore React.js, API integration, and modern frontend development.*
+*Built as a hands-on project to explore React.js, API integration, component-based architecture, and modern frontend development.*
