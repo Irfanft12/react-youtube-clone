@@ -1,4 +1,3 @@
-
 {
   "name": "react-youtube-clone",
   "version": "0.1.0",
@@ -8,11 +7,11 @@
     "@emotion/styled": "^11.10.0",
     "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.9.3",
-    "axios": "^0.27.2",
+    "axios": "^1.21.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-player": "^2.10.1",
-    "react-router-dom": "^6.3.0"
+    "react-router-dom": "^7.18.6"
   },
   "scripts": {
     "dev": "vite",
@@ -21,7 +20,6 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^6.3.0",
-    "eslint-plugin-jest": "^25.6.0",
     "vite": "^8.3.8"
   }
 }
