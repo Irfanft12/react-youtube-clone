@@ -1,21 +1,29 @@
+
 import axios from "axios";
 
-const BASE_URL = 'https://youtube-v31.p.rapidapi.com'
+const BASE_URL = "https://youtube-v31.p.rapidapi.com";
 
-const options = {
-    url: BASE_URL,
-    params: {
-      maxResults: '50'
-    },
-    headers: {
-      'X-RapidAPI-Key': import.meta.env.VITE_RAPID_API_KEY,
-      'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
-    }
-  };
+const api = axios.create({
+  baseURL: BASE_URL,
+  params: {
+    maxResults: 50,
+  },
+  headers: {
+    "X-RapidAPI-Key": import.meta.env.VITE_RAPID_API_KEY,
+    "X-RapidAPI-Host": "youtube-v31.p.rapidapi.com",
+  },
+});
 
-export const fetchFromAPI = async (url) => {
-   const { data } = await axios.get(`${BASE_URL}/${url}`, options)
+export const fetchFromAPI = async (endpoint) => {
+  try {
+    const { data } = await api.get(`/${endpoint}`);
+    return data;
+  } catch (error) {
+    console.error(
+      "YouTube API request failed:",
+      error.response?.data || error.message
+    );
 
-   return data
-
-}
+    throw error;
+  }
+};
