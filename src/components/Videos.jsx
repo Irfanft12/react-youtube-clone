@@ -4,8 +4,14 @@ import ChannelCard from "./ChannelCard";
 import VideoCard from "./VideoCard";
 
 const Videos = ({ videos, direction, width }) => {
-  if (!videos) return "Loading...";
-  // if (!videos.length) return "No videos found.";
+  if (!videos) {
+      return (
+        <Typography color="white" variant="h6">
+          Loading...
+        </Typography>
+      )
+  }
+  if (!videos.length) return "No videos found.";
 
   const validItems = videos.filter(
     (item) => item?.id?.videoId || item?.id?.channelId

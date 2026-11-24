@@ -1,43 +1,89 @@
-import { useState, useEffect } from "react"
-import { useParams } from "react-router-dom"
-import { Box } from "@mui/material"
-import Videos from "./Videos"
-import ChannelCard from "./ChannelCard"
-import { fetchFromAPI } from "../utilities/fetchFromAPI"
+
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { Box, Typography } from "@mui/material";
+import Videos from "./Videos";
+import ChannelCard from "./ChannelCard";
+import { fetchFromAPI } from "../utilities/fetchFromAPI";
 
 const ChannelDetail = () => {
-  const [channelDetail, setChannelDetail] = useState(null)
-  const [videos, setVideos] = useState([])
+  const [channelDetail, setChannelDetail] = useState(null);
+  const [videos, setVideos] = useState(null);
+  const [error, setError] = useState("");
 
-  const { id } = useParams()
-
-  console.log(channelDetail, videos)
+  const { id } = useParams();
 
   useEffect(() => {
-    fetchFromAPI(`channels?part=snippet&id=${id}`)
-      .then(data => setChannelDetail(data?.items[0]))
+    let ignore = false;
 
-    fetchFromAPI(`search?channelId=${id}&part=snippet&order=date`)
-      .then(data => setVideos(data?.items))
-  }, [id])
+    const fetchChannelData = async () => {
+      setChannelDetail(null);
+      setVideos(null);
+      setError("");
+
+      try {
+        const [channelData, videoData] = await Promise.all([
+          fetchFromAPI(`channels?part=snippet&id=${id}`),
+          fetchFromAPI(`search?channelId=${id}&part=snippet&order=date&type=video`),
+        ]);
+
+        if (!ignore) {
+          setChannelDetail(channelData?.items?.[0] || null);
+          setVideos(videoData?.items || []);
+        }
+      } catch (err) {
+        if (!ignore) {
+          setError("Unable to load channel information. Please try again.");
+          setVideos([]);
+        }
+      }
+    };
+
+    fetchChannelData();
+
+    return () => {
+      ignore = true;
+    };
+  }, [id]);
+
+  if (error) {
+    return (
+      <Box p={3}>
+        <Typography color="error">{error}</Typography>
+      </Box>
+    );
+  }
+
+  if (!channelDetail) {
+    return (
+      <Box p={3}>
+        <Typography color="white" variant="h6">
+          Loading channel...
+        </Typography>
+      </Box>
+    );
+  }
 
   return (
     <Box minHeight="95vh">
       <Box>
-        <div style={{ 
-          background: "linear-gradient(90deg, rgba(30,213,235,1) 0%, rgba(227,43,226,1) 100%, rgba(30,213,235,1) 100%)",
-          zIndex: 10,
-          height: "300px"
-         }} />
-         <ChannelCard channelDetail={channelDetail} marginTop="-110px" />
+        <Box
+          sx={{
+            background:
+              "linear-gradient(90deg, rgba(30,213,235,1) 0%, rgba(227,43,226,1) 100%)",
+            height: "300px",
+          }}
+        />
+        <ChannelCard channelDetail={channelDetail} marginTop="-110px" />
       </Box>
+
       <Box display="flex" p={2}>
-         <Box sx={{ mr: { sm: 'auto', } }}>
+        <Box sx={{ mr: { sm: "auto" } }}>
           <Videos videos={videos} />
-         </Box>
+        </Box>
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default ChannelDetail
+export default ChannelDetail;
