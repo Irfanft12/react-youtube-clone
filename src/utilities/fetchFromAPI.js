@@ -6,7 +6,7 @@ const BASE_URL = "https://youtube-v31.p.rapidapi.com";
 const api = axios.create({
   baseURL: BASE_URL,
   params: {
-    maxResults: 50,
+    maxResults: 12,
   },
   headers: {
     "X-RapidAPI-Key": import.meta.env.VITE_RAPID_API_KEY,
@@ -26,4 +26,16 @@ export const fetchFromAPI = async (endpoint) => {
 
     throw error;
   }
+};
+
+let initialFeedPromise;
+
+export const preloadInitialFeed = () => {
+  if (!initialFeedPromise) {
+    initialFeedPromise = fetchFromAPI(
+      "search?part=snippet&type=video&q=New"
+    );
+  }
+
+  return initialFeedPromise;
 };

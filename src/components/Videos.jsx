@@ -3,47 +3,66 @@ import { Stack, Box, Typography } from "@mui/material";
 import ChannelCard from "./ChannelCard";
 import VideoCard from "./VideoCard";
 
-const Videos = ({ videos, direction, width }) => {
+const Videos = ({ videos, direction = "row", width }) => {
   if (!videos) {
-      return (
-        <Typography color="white" variant="h6">
-          Loading...
-        </Typography>
-      )
+    return (
+      <Typography color="white" variant="h6">
+        Loading...
+      </Typography>
+    );
   }
-  if (!videos.length) return "No videos found.";
 
   const validItems = videos.filter(
     (item) => item?.id?.videoId || item?.id?.channelId
   );
 
   if (!validItems.length) {
-    console.log("validItems")
-  return (
-    <Typography color="white" variant="h6">
-      No videos found. Try a different search term.
-    </Typography>
+    return (
+      <Typography color="white" variant="h6">
+        No videos found. Try a different search term.
+      </Typography>
+    );
+  }
+
+  // Prioritize the first two video thumbnails
+  const priorityVideoIds = new Set(
+    validItems
+      .filter((item) => item.id.videoId)
+      .slice(0, 2)
+      .map((item) => item.id.videoId)
   );
-}
 
   return (
     <Stack
-      direction={direction || "row"}
+      direction={direction}
       flexWrap="wrap"
       sx={{ justifyContent: { md: "center", xs: "flex-start" } }}
       gap={2}
     >
-      {validItems.map((item) => (
-        <Box
-          key={item.id.videoId || item.id.channelId}
-          sx={{
-            width: width || { md: "calc(25% - 16px)", xs: "100%" },
-          }}
-        >
-          {item.id.videoId && <VideoCard video={item} />}
-          {item.id.channelId && <ChannelCard channelDetail={item} />}
-        </Box>
-      ))}
+      {validItems.map((item) => {
+        const videoId = item.id.videoId;
+        const channelId = item.id.channelId;
+
+        return (
+          <Box
+            key={videoId || channelId}
+            sx={{
+              width: width ?? { md: "calc(25% - 16px)", xs: "100%" },
+            }}
+          >
+            {videoId && (
+              <VideoCard
+                video={item}
+                priority={priorityVideoIds.has(videoId)}
+              />
+            )}
+
+            {channelId && (
+              <ChannelCard channelDetail={item} />
+            )}
+          </Box>
+        );
+      })}
     </Stack>
   );
 };

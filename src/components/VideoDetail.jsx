@@ -116,8 +116,11 @@ const VideoDetail = () => {
             >
               <Link to={`/channel/${channelId}`}>
                 <Typography
-                  variant={{ sm: "subtitle1", md: "h6" }}
-                  color="#fff"
+                  variant="h6"
+                  sx={{
+                    fontSize: { xs: "1rem", sm: "1.25rem", md: "1.25rem" },
+                    color: "#fff",
+                  }}
                 >
                   {channelTitle}
                   <CheckCircle

@@ -23,9 +23,11 @@ const ChannelDetail = () => {
 
       try {
         const [channelData, videoData] = await Promise.all([
-          fetchFromAPI(`channels?part=snippet&id=${id}`),
+          fetchFromAPI(`channels?part=snippet,statistics&id=${id}`),
           fetchFromAPI(`search?channelId=${id}&part=snippet&order=date&type=video`),
         ]);
+
+        
 
         if (!ignore) {
           setChannelDetail(channelData?.items?.[0] || null);

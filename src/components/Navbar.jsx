@@ -5,17 +5,23 @@ import SearchBar from "./SearchBar"
 
 
 const Navbar = () => (
-    <Stack
-      direction="row"
-      alignItems="center"
-      p={2}
-      sx={{position: "sticky", backgroundColor: "#000", justifyContent: "space-between"}}
-    >
-    <Link to="/" style={{display: "flex", alignItems: "center"}}>
-      <img src={logo} alt="logo" height={45} />
+  <Stack
+    direction="row"
+    alignItems="center"
+    p={2}
+    sx={{ position: "sticky", backgroundColor: "#000", justifyContent: "space-between" }}
+  >
+    <Link to="/" style={{ display: "flex", alignItems: "center" }}>
+      <img
+        src={logo}
+        alt="YouTube Clone logo"
+        width="45"
+        height="46"
+        decoding="async"
+      />
     </Link>
     <SearchBar />
-    </Stack>
-  )
+  </Stack>
+)
 
 export default Navbar

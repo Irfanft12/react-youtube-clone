@@ -1,9 +1,12 @@
 
 import { useState, useEffect } from "react";
-import { fetchFromAPI } from "../utilities/fetchFromAPI";
+import { fetchFromAPI, preloadInitialFeed } from "../utilities/fetchFromAPI";
 import { Box, Stack, Typography } from "@mui/material";
 import Sidebar from "./Sidebar";
 import Videos from "./Videos";
+
+// Start loading the initial feed before the component renders
+preloadInitialFeed().catch(() => {});
 
 const Feed = () => {
   const [selectedCategory, setSelectedCategory] = useState("New");
@@ -18,9 +21,12 @@ const Feed = () => {
       setError("");
 
       try {
-        const data = await fetchFromAPI(
-          `search?part=snippet&type=video&q=${encodeURIComponent(selectedCategory)}`
-        );
+        const data =
+          selectedCategory === "New"
+            ? await preloadInitialFeed()
+            : await fetchFromAPI(
+              `search?part=snippet&type=video&q=${encodeURIComponent(selectedCategory)}`
+            );
 
         if (!ignore) {
           setVideos(data.items || []);
